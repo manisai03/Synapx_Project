@@ -14,11 +14,11 @@ The focus is clarity over complexity, strong backend fundamentals, and clean pro
 Insurance FNOL documents often arrive as unstructured text or PDFs. Manual processing is slow and error-prone.
 This system:
 
-  • Extracts key claim fields
-  • Identifies missing or inconsistent information
-  • Applies confidence scoring
-  • Routes claims automatically (Fast Track / Manual Review / Specialist Queue)
-  • Persists claim lifecycle state
+    • Extracts key claim fields
+    • Identifies missing or inconsistent information
+    • Applies confidence scoring
+    • Routes claims automatically (Fast Track / Manual Review / Specialist Queue)
+    • Persists claim lifecycle state
 
 🧱 System Architecture:
 -> High-Level Architecture,
