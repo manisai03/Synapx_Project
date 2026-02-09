@@ -285,3 +285,32 @@ Stores:
                 "reasoning": "Injury claims require specialist review."
                 } "
 
+• Project Structure:
+
+                demo
+                ├── src
+                    ├── com.example.demo
+                        ├── ControllerLayer
+                            ├── ClaimController
+                        ├── ServiceLayer
+                            ├── AIExtractionService
+                            ├── ClaimProcessingService
+                            ├── PdfExtractionService
+                            ├── RoutingService
+                        ├── Validation
+                            ├── ClaimValidator
+                        ├── Repository
+                            ├── ClaimRepository
+                        ├── Entity
+                            ├── ClaimEntity
+                            ├── ClaimStatus
+                        ├── DTO
+                            ├── ClaimResponse
+                        ├── Util
+                            ├── ClaimIdGenerator
+                        ├── Exception
+                            ├── ErrorResponse
+                            ├── GlobalExeptionHandler
+                        └── config
+                            ├── AsyncConfig
+                            ├── FraudConfig
