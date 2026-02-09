@@ -188,11 +188,13 @@ Extracted fields:
 6. DTO Layer:
 
    • ClaimResponse: Standardized response object returned to API clients.
+   
 7.Config Layer:
 
    • AsyncConfig: Enables multi‑threaded file processing.
 
    • FraudConfig: Externalizes fraud detection keywords.
+   
 8.Exception Handling:
 
    • GlobalExceptionHandler: Provides standardized error response structure.
@@ -211,3 +213,46 @@ Extracted fields:
             • Explainable
             • Fast
             • Easily extensible to ML models later
+
+• Async Processing:
+
+   • Multi‑file FNOL uploads are processed concurrently using:
+
+            -> " @Async + ThreadPoolTaskExecutor "
+Benefits:
+
+• Improved throughput
+• Real‑world scalability simulation
+
+• Database Design:
+
+   • Database: H2 (In‑Memory)
+
+Stores:
+
+        • Claim Metadata
+        • Routing Decision
+        • Confidence Score
+        • Claim Lifecycle State
+
+• Testing Strategy:
+
+   • Testing is implemented using:
+
+                    • JUnit 5
+                    • Mockito
+                    • MockMvc
+
+• Test Coverage Includes:
+                
+                  Test Type	                 Coverage
+                • Unit Testing	        -    Validation + Extraction
+                • Service Testing	    -    Claim Processing Flow
+                • Controller Testing	-    REST API Behaviour
+                • Integration Testing	-    Spring Context Loading
+
+• Sample Output:
+
+            " Recommended Route: Investigation
+              Average Confidence: 90%
+             Claim Status: PROCESSED "
