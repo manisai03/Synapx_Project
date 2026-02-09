@@ -64,32 +64,32 @@ Docs	Springdoc OpenAPI
 Build	Maven
 
 Functional Features:
+
 1.Input Types Supported:
 
-Text-based FNOL input (text/plain)
-Single PDF upload
-Multiple PDF uploads (parallel processing)
+• Text-based FNOL input (text/plain)
+• Single PDF upload
+• Multiple PDF uploads (parallel processing)
 
 2.Field Extraction
 
 Extracted fields:
-• Policy Number
-• Policy Holder Name
-• Incident Date
-• Location
-• Claim Type
-• Estimated Damage
-• Full Description
+    
+    • Policy Number
+    • Policy Holder Name
+    • Incident Date
+    • Location
+    • Claim Type
+    • Estimated Damage
+    • Full Description
 
 3.Confidence Scoring:
 
-Each extracted field receives a confidence score (0–100).
-Average confidence is calculated per claim.
+• Each extracted field receives a confidence score (0–100).
+• Average confidence is calculated per claim.
 
 4.Validation
 
-• Mandatory fields validation
-• Missing fields identified
-• Returned in API response
-
-
+    • Mandatory fields validation
+    • Missing fields identified
+    • Returned in API response
