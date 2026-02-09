@@ -46,7 +46,50 @@ This system:
                   H2-Database
 • Design Principles:
 
-   -> Layered architecture for clarity
-   -> Single responsibility per service
-   -> Stateless processing
-   -> Extensible rule-based logic
+       -> Layered architecture for clarity
+       -> Single responsibility per service
+       -> Stateless processing
+       -> Extensible rule-based logic
+
+Technology Stack:
+Layer	Technology
+Language	Java 17
+Backend	Spring Boot
+API	REST (JSON)
+Database	H2 (In-memory)
+ORM	Spring Data JPA
+Async	CompletableFuture
+PDF Parsing	Apache PDFBox
+Docs	Springdoc OpenAPI
+Build	Maven
+
+Functional Features:
+1.Input Types Supported:
+
+Text-based FNOL input (text/plain)
+Single PDF upload
+Multiple PDF uploads (parallel processing)
+
+2.Field Extraction
+
+Extracted fields:
+• Policy Number
+• Policy Holder Name
+• Incident Date
+• Location
+• Claim Type
+• Estimated Damage
+• Full Description
+
+3.Confidence Scoring:
+
+Each extracted field receives a confidence score (0–100).
+Average confidence is calculated per claim.
+
+4.Validation
+
+• Mandatory fields validation
+• Missing fields identified
+• Returned in API response
+
+
