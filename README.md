@@ -1,7 +1,9 @@
 🚀 Autonomous Insurance Claims Processing Agent (Lite Version)
+
 👨‍💻 Candidate: Somala Mani Sai Reddy
 
-Role Applied: Junior Software Engineer – Synapx 
+Role Applied: Junior Software Engineer – Synapx
+
 Tech Stack: Java, Spring Boot, H2 Database, PDFBox, Swagger, JUnit, Mockito
 
 📌 Overview
@@ -146,11 +148,12 @@ Extracted fields:
         • Generates confidence scores
 
 3️.PdfExtractionService:
-        • Extracts raw text using Apache PDFBox
+
+   • Extracts raw text using Apache PDFBox
 
 4️.RoutingService:
 
-Implements rule‑based workflow routing:
+• Implements rule‑based workflow routing:
 
               Condition	                     Route
             • Missing Mandatory Fields	-    Manual Review
