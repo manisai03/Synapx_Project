@@ -4,17 +4,28 @@
 
 Role Applied: Junior Software Engineer – Synapx
 
-Tech Stack: Java, Spring Boot, H2 Database, PDFBox, Swagger, JUnit, Mockito
+Primary Focus: Backend System Design & FNOL Workflow Automation
 
-📌 Overview
+📌 Project Overview:
 
-This project is a lite autonomous backend system for processing FNOL (First Notice of Loss) insurance claims. It simulates how real-world insurance platforms automatically extract claim details, validate completeness, calculate confidence, and route claims to the appropriate processing queue.
-The focus is clarity over complexity, strong backend fundamentals, and clean problem breakdown — exactly as expected for a Junior Software Engineer role.
+This project is a lightweight autonomous backend system designed to process FNOL (First Notice of Loss) insurance claims. The system simulates real-world insurance claim ingestion pipelines by automatically extracting, validating, scoring, and routing insurance claims from unstructured inputs such as PDFs or text.
 
-🎯 Problem Statement:
+The system emphasizes:
 
-Insurance FNOL documents often arrive as unstructured text or PDFs. Manual processing is slow and error-prone.
-This system:
+        • Clean backend architecture
+        • Explainable automation logic
+        • High maintainability
+        • Real-world scalability thinking
+
+• Problem Statement:
+
+Insurance companies receive FNOL documents in various unstructured formats like scanned PDFs and emails. Manual processing introduces:
+
+            • Human errors
+            • Processing delays
+            • Inconsistent decision routing
+            • Lack of traceability
+This system automates FNOL processing by:
 
     • Extracts key claim fields
     • Identifies missing or inconsistent information
@@ -22,7 +33,7 @@ This system:
     • Routes claims automatically (Fast Track / Manual Review / Specialist Queue)
     • Persists claim lifecycle state
 
-🧱 System Architecture:
+• System Architecture:
 -> High-Level Architecture,
 
               Client (Postman / UI)
@@ -48,12 +59,14 @@ This system:
                   H2-Database
 • Design Principles:
 
-       -> Layered architecture for clarity
-       -> Single responsibility per service
-       -> Stateless processing
-       -> Extensible rule-based logic
+                -> Layered Architecture
+                -> Single Responsibility Per Component
+                -> Stateless Processing
+                -> Config-Driven Business Rules
+                -> Explainable Automation Logic
+                -> Extensibility for ML Integration
 
-Technology Stack:
+• Technology Stack:
 
               Layer	                Technology
             • Language	      -      Java 17
@@ -66,7 +79,19 @@ Technology Stack:
             • Docs	          -      Springdoc OpenAPI
             • Build	          -      Maven
 
-Functional Features:
+• FNOL Processing Sequence Flow
+
+                1.Client uploads FNOL document (PDF / Text)
+                2.Controller receives request
+                3.ClaimProcessingService orchestrates workflow
+                4.PDF text extraction executed
+                5.AIExtractionService extracts structured data
+                6.Validator checks mandatory fields
+                7.RoutingService determines claim processing queue
+                8.Claim persisted to database
+                9.Response returned to client
+
+• Functional Features:
 
 1.Input Types Supported:
 
@@ -181,13 +206,21 @@ Extracted fields:
 
    • ClaimEntity: Represents stored claim data including.
 
-            • Claim lifecycle state
-            • Average confidence score
+            • Claim metadata
+            • Confidence score
             • Routing decision
+            • Lifecycle state
+            • Timestamp tracking
 
 6. DTO Layer:
 
    • ClaimResponse: Standardized response object returned to API clients.
+
+            • Extracted fields
+            • Missing field report
+            • Routing decision
+            • Confidence score
+            • Processing time
    
 7.Config Layer:
 
@@ -214,6 +247,13 @@ Extracted fields:
             • Fast
             • Easily extensible to ML models later
 
+• Confidence Scoring Logic:
+
+        • Each extracted field receives score (0-100)
+        • Missing fields assigned 0
+        • Average confidence calculated per claim
+This helps simulate real document extraction confidence metrics.
+
 • Async Processing:
 
    • Multi‑file FNOL uploads are processed concurrently using:
@@ -234,6 +274,13 @@ Stores:
         • Routing Decision
         • Confidence Score
         • Claim Lifecycle State
+
+• Performance Considerations:
+
+        • Parallel file processing via thread pools
+        • Stateless service enabling horizontal scalability
+        • Lightweight H2 database for fast evaluation
+        • Configurable fraud detection rules
 
 • Testing Strategy:
 
@@ -314,3 +361,8 @@ Stores:
                         └── config
                             ├── AsyncConfig
                             ├── FraudConfig
+
+
+• Summary:
+
+This FNOL Processing Agent demonstrates strong backend engineering fundamentals with a clear focus on maintainability, scalability, and explainable automation logic. The architecture is intentionally designed to simulate real enterprise insurance claim processing systems while remaining lightweight and extensible.
