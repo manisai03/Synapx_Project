@@ -251,8 +251,37 @@ Stores:
                 • Controller Testing	-    REST API Behaviour
                 • Integration Testing	-    Spring Context Loading
 
+• API Endpoints:
+
+   • Process Text FNOL,
+
+            • POST - /api/claims/process-text
+            • Content-Type: text/plain
+   • Process Single File,
+
+            • POST - /api/claims/process
+            • Form-Data: file
+   • Process Multiple Files,
+
+            • POST - /api/claims/process-multiple
+            • Form-Data: files[]
 • Sample Output:
 
-            " Recommended Route: Investigation
-              Average Confidence: 90%
-             Claim Status: PROCESSED "
+                " {
+                "fileName": "TEXT_INPUT",
+                "claimId": "CLM-8ca6a5a7",
+                "processingTimeMs": 0,
+                "averageConfidence": 90.0,
+                "extractedFields": {
+                "policyNumber": "POL-88888",
+                "policyHolderName": "Arjun Reddy",
+                "incidentDate": "02/02/2026",
+                "location": "Chennai",
+                "estimatedDamage": 50000,
+                "claimType": "Injury"
+                },
+                "missingFields": [],
+                "recommendedRoute": "Specialist Queue",
+                "reasoning": "Injury claims require specialist review."
+                } "
+
