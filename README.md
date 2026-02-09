@@ -135,6 +135,7 @@ Extracted fields:
 2.Service Layer:
 
 • Responsibility: Contains business logic and orchestration.
+
 • Services Implemented:
 
 1️.ClaimProcessingService
@@ -187,13 +188,11 @@ Extracted fields:
 6. DTO Layer:
 
    • ClaimResponse: Standardized response object returned to API clients.
-
 7.Config Layer:
 
    • AsyncConfig: Enables multi‑threaded file processing.
 
    • FraudConfig: Externalizes fraud detection keywords.
-
 8.Exception Handling:
 
    • GlobalExceptionHandler: Provides standardized error response structure.
