@@ -115,7 +115,8 @@ Extracted fields:
 📂 Project Layers Explanation:
 
 1.ControllerLayer:
-    • Responsibility:
+
+   • Responsibility:
 
             • Handles incoming HTTP requests and returns API responses.
             • Implemented Features
@@ -123,6 +124,7 @@ Extracted fields:
             • Multiple FNOL file processing
             • Text input FNOL processing
 • Key File: " ClaimController "
+
 • Endpoints:
 
               Endpoint	                            Description
@@ -130,7 +132,7 @@ Extracted fields:
             • /api/claims/process-multiple    -     Multi File Upload
             • /api/claims/process-text	      -     Text Based Processing
 
-3.Service Layer:
+2.Service Layer:
 
 • Responsibility: Contains business logic and orchestration.
 • Services Implemented:
@@ -162,4 +164,51 @@ Extracted fields:
             • Damage < 25000	        -    Fast Track
             • Others	                -    Standard Processing
 
+3.Validation Layer:
 
+   • ClaimValidator: Ensures mandatory FNOL fields exist.
+
+        • Policy Number        • Policy Holder Name
+        • Incident Date        • Location
+        • Estimated Damage     • Claim Type
+
+4.Repository Layer:
+
+   • ClaimRepository: Uses Spring Data JPA for database persistence.
+
+5. Entity Layer:
+
+   • ClaimEntity: Represents stored claim data including.
+
+            • Claim lifecycle state
+            • Average confidence score
+            • Routing decision
+
+6. DTO Layer:
+
+   • ClaimResponse: Standardized response object returned to API clients.
+
+7.Config Layer:
+
+   • AsyncConfig: Enables multi‑threaded file processing.
+
+   • FraudConfig: Externalizes fraud detection keywords.
+
+8.Exception Handling:
+
+   • GlobalExceptionHandler: Provides standardized error response structure.
+
+• AI / Automation Approach:
+
+   • Instead of using heavy ML models, this project uses:
+
+            • Regex‑driven information extraction
+            • Confidence scoring logic
+            • Rule‑based decision engine
+
+  • This approach keeps the system:
+
+            • Lightweight
+            • Explainable
+            • Fast
+            • Easily extensible to ML models later
