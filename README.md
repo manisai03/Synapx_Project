@@ -52,24 +52,25 @@ This system:
        -> Extensible rule-based logic
 
 Technology Stack:
-Layer	Technology
-Language	Java 17
-Backend	Spring Boot
-API	REST (JSON)
-Database	H2 (In-memory)
-ORM	Spring Data JPA
-Async	CompletableFuture
-PDF Parsing	Apache PDFBox
-Docs	Springdoc OpenAPI
-Build	Maven
+
+              Layer	                Technology
+            • Language	      -      Java 17
+            • Backend	      -      Spring Boot
+            • API	          -      REST (JSON)
+            • Database	      -      H2 (In-memory)
+            • ORM	          -      Spring Data JPA
+            • Async	          -      CompletableFuture
+            • PDF Parsing	  -      Apache PDFBox
+            • Docs	          -      Springdoc OpenAPI
+            • Build	          -      Maven
 
 Functional Features:
 
 1.Input Types Supported:
 
-• Text-based FNOL input (text/plain)
-• Single PDF upload
-• Multiple PDF uploads (parallel processing)
+    • Text-based FNOL input (text/plain)
+    • Single PDF upload
+    • Multiple PDF uploads (parallel processing)
 
 2.Field Extraction
 
@@ -85,11 +86,77 @@ Extracted fields:
 
 3.Confidence Scoring:
 
-• Each extracted field receives a confidence score (0–100).
-• Average confidence is calculated per claim.
+    • Each extracted field receives a confidence score (0–100).
+    • Average confidence is calculated per claim.
 
-4.Validation
+4.Validation:
 
     • Mandatory fields validation
     • Missing fields identified
     • Returned in API response
+
+5.Routing Logic:
+
+      Condition	                      Route
+    • Missing mandatory fields   -    Manual Review
+    • Injury claim	             -    Specialist Queue
+    • Damage ≤ 25,000	         -    Fast Track
+    • Otherwise                  -    Manual Review
+
+6.Claim Lifecycle:
+
+• Each claim progresses through:
+
+            CREATED → VALIDATED → ROUTED → PROCESSED
+• Stored in the database for traceability.
+
+📂 Project Layers Explanation:
+
+1.ControllerLayer:
+    • Responsibility:
+
+            • Handles incoming HTTP requests and returns API responses.
+            • Implemented Features
+            • Single FNOL file processing
+            • Multiple FNOL file processing
+            • Text input FNOL processing
+• Key File: " ClaimController "
+• Endpoints:
+
+              Endpoint	                            Description
+            • /api/claims/process	          -     Single PDF Upload
+            • /api/claims/process-multiple    -     Multi File Upload
+            • /api/claims/process-text	      -     Text Based Processing
+
+3.Service Layer:
+
+• Responsibility: Contains business logic and orchestration.
+• Services Implemented:
+
+1️.ClaimProcessingService
+
+            • Main orchestration engine
+            • Calls extraction, validation, routing, and persistence
+            • Supports async multi‑file processing
+
+2️.AIExtractionService:
+
+        • Uses Regex‑based NLP simulation
+        • Extracts structured FNOL fields
+        • Generates confidence scores
+
+3️.PdfExtractionService:
+        • Extracts raw text using Apache PDFBox
+
+4️.RoutingService:
+
+Implements rule‑based workflow routing:
+
+              Condition	                     Route
+            • Missing Mandatory Fields	-    Manual Review
+            • Fraud Keyword Detection	-    Investigation
+            • Injury Claim Type	        -    Specialist Queue
+            • Damage < 25000	        -    Fast Track
+            • Others	                -    Standard Processing
+
+
