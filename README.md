@@ -318,7 +318,26 @@ Stores:
             • POST - /api/claims/process-multiple
             • Form-Data: files[]
 
-            
+• How To Run The Project:
+
+   -> Prerequisites:
+   
+                • Java 17
+                • Maven
+                • Postman or Curl
+
+   -> Steps:
+
+                1. Clone repository: git clone <repo-url>
+                2. Navigate to project: cd Synapx_Project
+                3. Build project: mvn clean install
+                4. Run application: mvn spring-boot:run
+                5. Access services:
+                
+                   -> Swagger UI: http://localhost:8081/swagger-ui.html
+                   -> H2 Console: http://localhost:8081/h2-console
+                   -> JDBC URL: jdbc:h2:mem:testdb
+
 • Sample Output:
 
                 " {
