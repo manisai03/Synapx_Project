@@ -232,15 +232,16 @@ Extracted fields:
 
    • GlobalExceptionHandler: Provides standardized error response structure.
 
+
 • AI / Automation Approach:
 
-   • Instead of using heavy ML models, this project uses:
+   -> Instead of using heavy ML models, this project uses:
 
             • Regex‑driven information extraction
             • Confidence scoring logic
             • Rule‑based decision engine
 
-  • This approach keeps the system:
+   -> This approach keeps the system:
 
             • Lightweight
             • Explainable
@@ -256,7 +257,7 @@ This helps simulate real document extraction confidence metrics.
 
 • Async Processing:
 
-   • Multi‑file FNOL uploads are processed concurrently using:
+   -> Multi‑file FNOL uploads are processed concurrently using:
 
             -> " @Async + ThreadPoolTaskExecutor "
 Benefits:
@@ -264,9 +265,10 @@ Benefits:
 • Improved throughput
 • Real‑world scalability simulation
 
+
 • Database Design:
 
-   • Database: H2 (In‑Memory)
+   -> Database: H2 (In‑Memory)
 
 Stores:
 
@@ -275,6 +277,7 @@ Stores:
         • Confidence Score
         • Claim Lifecycle State
 
+
 • Performance Considerations:
 
         • Parallel file processing via thread pools
@@ -282,15 +285,16 @@ Stores:
         • Lightweight H2 database for fast evaluation
         • Configurable fraud detection rules
 
+
 • Testing Strategy:
 
-   • Testing is implemented using:
+   -> Testing is implemented using:
 
                     • JUnit 5
                     • Mockito
                     • MockMvc
 
-• Test Coverage Includes:
+-> Test Coverage Includes:
                 
                   Test Type	                 Coverage
                 • Unit Testing	        -    Validation + Extraction
@@ -298,20 +302,23 @@ Stores:
                 • Controller Testing	-    REST API Behaviour
                 • Integration Testing	-    Spring Context Loading
 
+
 • API Endpoints:
 
-   • Process Text FNOL,
+   -> Process Text FNOL,
 
             • POST - /api/claims/process-text
             • Content-Type: text/plain
-   • Process Single File,
+   -> Process Single File,
 
             • POST - /api/claims/process
             • Form-Data: file
-   • Process Multiple Files,
+   -> Process Multiple Files,
 
             • POST - /api/claims/process-multiple
             • Form-Data: files[]
+
+            
 • Sample Output:
 
                 " {
@@ -331,6 +338,7 @@ Stores:
                 "recommendedRoute": "Specialist Queue",
                 "reasoning": "Injury claims require specialist review."
                 } "
+                
 
 • Project Structure:
 
